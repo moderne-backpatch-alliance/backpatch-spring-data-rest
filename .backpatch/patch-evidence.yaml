@@ -1,17 +1,22 @@
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 3.7.18.1-backpatch-00001
+release: 3.7.18.1-backpatch-00002
 baseline: v3.7.18+backpatch.baseline
 fixes:
   - cve: CVE-2026-41717
     upstream: https://nvd.nist.gov/vuln/detail/CVE-2026-41717
     artifacts:
       - org.springframework.data:spring-data-mongodb
-    note: New in this release; ported onto 3.7.18; fixed at 3.4.18.1-backpatch-00001 (backpatch-spring-data-mongodb@7ee7b5e).
+    note: Carried from 3.7.18.1-backpatch-00001; ported onto 3.7.18; fixed at 3.4.18.1-backpatch-00001 (backpatch-spring-data-mongodb@7ee7b5e).
+  - cve: CVE-2026-41729
+    upstream: https://nvd.nist.gov/vuln/detail/CVE-2026-41729
+    artifacts:
+      - org.springframework.data:spring-data-rest-webmvc
+    note: New in this release; ported onto 3.7.18; fixed at 3.7.18.1-backpatch-00002 (backpatch-spring-data-rest@87cd40e).
 tests:
-  commit: e7494c250de5bd61899fdb48a594b7d83aaff197
-  command: mvn -B -q -pl spring-data-rest-core,spring-data-rest-hal-explorer,spring-data-rest-webmvc -am test -Dmaven.javadoc.skip=true -Denforcer.skip=true -Dgpg.skip=true
+  commit: 87cd40e8e42da9c78554c645858a383211eb64ee
+  command: mvn -B -q -pl spring-data-rest-webmvc -am test -Dtest=JsonPointerMappingTests,ReplaceOperationTests,SpelPathUnitTests -DfailIfNoTests=false -Dsurefire.failIfNoSpecifiedTests=false
   runtime: OpenJDK 1.8.0_372 (Zulu), Apache Maven 3.9.14
-  report: spring-data-rest-webmvc-3.7.18.1-backpatch-00001-tests.zip
+  report: spring-data-rest-webmvc-3.7.18.1-backpatch-00002-tests.zip
   result: pass
-  note: no source change in this repository up to this release, the tree at the tag is the upstream baseline plus the OSERA plumbing; the upstream suite of spring-data-rest-core, spring-data-rest-hal-explorer, spring-data-rest-webmvc at the release commit, 0 test(s) run, 0 failed
+  note: the regression tests the fix commits touched, 0 test(s) run, 0 failed, at the tested commit
