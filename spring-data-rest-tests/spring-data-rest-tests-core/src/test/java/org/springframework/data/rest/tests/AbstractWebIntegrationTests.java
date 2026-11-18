@@ -115,13 +115,13 @@ public abstract class AbstractWebIntegrationTests {
 		return StringUtils.hasText(response.getContentAsString()) ? response : client.request(link);
 	}
 
-	protected MockHttpServletResponse putOnlyExpect5XXStatus(Link link, Object payload, MediaType mediaType)
+	protected MockHttpServletResponse putOnlyExpect4XXStatus(Link link, Object payload, MediaType mediaType)
 			throws Exception {
 
 		String href = link.isTemplated() ? link.expand().getHref() : link.getHref();
 
 		MockHttpServletResponse response = mvc.perform(put(href).content(payload.toString()).contentType(mediaType))//
-				.andExpect(status().is5xxServerError())//
+				.andExpect(status().is4xxClientError())//
 				.andReturn().getResponse();
 
 		return StringUtils.hasText(response.getContentAsString()) ? response : client.request(link);
