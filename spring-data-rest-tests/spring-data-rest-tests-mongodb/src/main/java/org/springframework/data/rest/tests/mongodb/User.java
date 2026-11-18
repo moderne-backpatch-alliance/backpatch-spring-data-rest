@@ -28,6 +28,7 @@ import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
@@ -54,6 +55,7 @@ public class User {
 	public @DBRef(lazy = true) User manager;
 	public @DBRef(lazy = true) Map<String, User> map;
 	public Map<String, Nested> colleaguesMap = new HashMap<String, Nested>();
+	public @JsonIgnore String ignored;
 
 	public static class EmailAddress {
 
