@@ -1,6 +1,6 @@
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 3.7.18.1-backpatch-00012
+release: 3.7.18.1-backpatch-00013
 baseline: v3.7.18+backpatch.baseline
 fixes:
   - cve: CVE-2026-41717
@@ -90,12 +90,20 @@ fixes:
     basis: adapted
     artifacts:
       - org.springframework.data:spring-data-rest-webmvc
-    note: New in this release; ported onto 3.7.18; fixed at 3.7.18.1-backpatch-00012 (backpatch-spring-data-rest@f019300).
+    note: Carried from 3.7.18.1-backpatch-00012; ported onto 3.7.18; fixed at 3.7.18.1-backpatch-00012 (backpatch-spring-data-rest@f019300).
+  - cve: CVE-2026-41697
+    upstream_fix_url: https://github.com/advisories/GHSA-8r2h-xh92-gq57
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2026-41697
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-spring-data-relational/compare/2a39e4a~1...81864bc
+    basis: adapted
+    artifacts:
+      - org.springframework.data:spring-data-relational
+    note: New in this release; ported onto 3.7.18; fixed at 2.4.18.1-backpatch-00013 (backpatch-spring-data-relational@2a39e4a..81864bc).
 tests:
-  commit: f0193006287829ad7a7f0e8c6d6ac9b6cbeabce0
-  command: mvn -B -T1 -Pit -pl spring-data-rest-core,spring-data-rest-webmvc -am -Dmaven.javadoc.skip=true -Dossindex.skip=true -pl spring-data-rest-tests/spring-data-rest-tests-mongodb,spring-data-rest-tests/spring-data-rest-tests-jpa -Dmaven.test.failure.ignore=true clean test
-  runtime: openjdk version 1.8.0_382, Apache Maven 3.9.16
-  report: spring-data-rest-webmvc-3.7.18.1-backpatch-00012-tests.zip
-  report_sha256: a72ed062c2308cae2fbb8335cb455a0f157d5752cae5d81ce217a4abc7707121
+  commit: 6cef1857dcf73960609004fb408e9d2a13fcbbed
+  command: none in this repository
+  runtime: none, no build or test ran for this release
+  report: spring-data-relational-2.4.18.1-backpatch-00013-tests.zip
+  report_sha256: e79ebf730c0a7db6b65ab4be4482a9e1c259e636ae075ff97e3556f7194ce8c4
   result: pass
-  note: 668 tests at the patch commit, 1 of them skipped by the suite, 0 failed, 0 errors.
+  note: this release changes only the versions this repository pins, nothing ran here; its test provenance is CVE-2026-41697 carried by moderne-backpatch-alliance/backpatch-spring-data-relational at v2.4.18.1-backpatch-00013, whose .backpatch/patch-evidence.yaml records the tests that ran
