@@ -1,6 +1,6 @@
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 3.7.18.1-backpatch-00011
+release: 3.7.18.1-backpatch-00012
 baseline: v3.7.18+backpatch.baseline
 fixes:
   - cve: CVE-2026-41717
@@ -82,12 +82,20 @@ fixes:
     basis: adapted
     artifacts:
       - org.springframework.data:spring-data-rest-webmvc
-    note: New in this release; ported onto 3.7.18; fixed at 3.7.18.1-backpatch-00011 (backpatch-spring-data-rest@8616143).
+    note: Carried from 3.7.18.1-backpatch-00011; ported onto 3.7.18; fixed at 3.7.18.1-backpatch-00011 (backpatch-spring-data-rest@8616143).
+  - cve: CVE-2026-41837
+    upstream_fix_url: https://github.com/spring-projects/spring-data-rest/commit/f1bcf063ae959e97221304f49130d52805f8ac86
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2026-41837
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-spring-data-rest/commit/f019300
+    basis: adapted
+    artifacts:
+      - org.springframework.data:spring-data-rest-webmvc
+    note: New in this release; ported onto 3.7.18; fixed at 3.7.18.1-backpatch-00012 (backpatch-spring-data-rest@f019300).
 tests:
-  commit: 86161437b51ad9b3ce7637019b3632da2f464fc4
+  commit: f0193006287829ad7a7f0e8c6d6ac9b6cbeabce0
   command: mvn -B -T1 -Pit -pl spring-data-rest-core,spring-data-rest-webmvc -am -Dmaven.javadoc.skip=true -Dossindex.skip=true -pl spring-data-rest-tests/spring-data-rest-tests-mongodb,spring-data-rest-tests/spring-data-rest-tests-jpa -Dmaven.test.failure.ignore=true clean test
   runtime: openjdk version 1.8.0_382, Apache Maven 3.9.16
-  report: spring-data-rest-webmvc-3.7.18.1-backpatch-00011-tests.zip
-  report_sha256: b6f37de15a7ba6c0531400fafb4b05f67506cc49143cfb5fb54b515794a6c490
+  report: spring-data-rest-webmvc-3.7.18.1-backpatch-00012-tests.zip
+  report_sha256: a72ed062c2308cae2fbb8335cb455a0f157d5752cae5d81ce217a4abc7707121
   result: pass
-  note: 666 tests at the patch commit, 1 of them skipped by the suite, 0 failed, 0 errors.
+  note: 668 tests at the patch commit, 1 of them skipped by the suite, 0 failed, 0 errors.
